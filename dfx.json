@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "dfx": "0.9.3",
+  "canisters": {
+    "sigmadefi": {
+      "type": "motoko",
+      "main": "contacts/contacts/mmultisender.mo",
+      "declarations": {
+        "output": "src/declarations/",
+        "bindings": [
+          "ts"
+        ],
+        "env_override": "xxxxx"
+      }
+    },
+    "ledger": {
+      "type": "motoko",
+      "candid": "ledger.public.did",
+      "wasm": "ledger.wasm"
+    },
+    "frontend" : {
+      "dependencies" : [
+        "defi_dapp"
+      ],
+      "source" : [
+        "src/frontend_assets"
+      ],
+      "type": "assets"
+    },
+    "contacts_assets": {
+      "type": "assets",
+      "source": [
+        "src/contacts_assets/assets"
+      ],
+      "dependencies": [
+        "contacts",
+        "ledger"
+      ]
+    }
+  },
+  "defaults": {
+    "config": {
+      "CREATEDIP20CANISTER_ID": "pvre2-hyaaa-aaaal-qa57q-cai",
+      "SIGMADEFI_CANISTER_ID": "fl4re-jyaaa-aaaag-qaloa-cai",
+      "MULTISENDER_CANISTER_ID": "psqco-kaaaa-aaaal-qa57a-cai",
+      "GENERATENFT_CANISTER_ID": "55eq6-miaaa-aaaal-qa66q-cai",
+      "LEDGER_CANISTER_ID": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+    }
+  },
+  "build": {
+    "packtool": "",
+    "args": ""
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    },
+    "ic": {
+      "bind": "ic0.app"
+    }
+  }
+}
